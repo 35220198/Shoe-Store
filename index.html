@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Modern responsive shoe store with animated hero, product grid and a working shopping cart.">
+<title>StepUp | Premium Shoes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <symbol id="shoe" viewBox="0 0 300 170">
+      <ellipse cx="152" cy="162" rx="120" ry="7" fill="#000" opacity=".28"/>
+      <path d="M26 118C22 90 28 52 52 34 66 24 86 22 100 28c8 22 24 34 48 42 28 10 78 12 114 34 18 8 28 12 26 16H26Z" style="fill:var(--main)"/>
+      <path d="M214 84c30 6 58 22 74 34v2H196c4-16 10-28 18-36Z" style="fill:var(--toe)"/>
+      <path d="M26 118C22 92 26 64 40 46h32c-12 24-14 52-10 74Z" style="fill:var(--acc)"/>
+      <path d="M98 26c6-18 24-22 38-16-2 24-6 44-12 56-10-8-20-22-26-40Z" style="fill:var(--toe)"/>
+      <path d="M96 100c34 12 74 0 112-18-22 26-68 40-112 18Z" style="fill:var(--acc)"/>
+      <path d="M26 118C22 90 28 52 52 34 66 24 86 22 100 28c8 22 24 34 48 42 28 10 78 12 114 34 18 8 28 12 26 16H26Z" fill="url(#shine)"/>
+      <path d="M132 72l10-10M150 76l10-10M168 80l10-10M186 84l10-10" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M22 118h264c8 22-6 38-34 38H52c-24 0-38-16-30-38Z" style="fill:var(--sole)"/>
+      <path d="M27 138h260" stroke="#000" stroke-opacity=".14" stroke-width="3"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="navbar" id="top">
+  <a class="brand" href="#top" aria-label="StepUp home">
+    <svg class="brand-ico" style="--main:#2f5bff;--toe:#fff;--acc:#0a0f2c;--sole:#fff"><use href="#shoe"/></svg><span>StepUp</span>
+  </a>
+  <nav id="nav" class="nav">
+    <a href="#top">Home</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="actions">
+    <button class="cart-btn" id="openCart" aria-label="Open cart">
+      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.200 11h10.600L20 7H6.200M9 20h.01M17 20h.01"/></svg>
+      <span class="badge" id="badge">0</span>
+    </button>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+  <div class="hero-copy">
+    <h1>Step Up <br>Your Style</h1>
+    <p>Premium Shoes for Everyone</p>
+    <a href="#shop" class="btn btn-yellow">Shop Now &rarr;</a>
+  </div>
+  <div class="stage">
+    <svg class="shoe hero-shoe" id="heroShoe" role="img" aria-label="Featured sneaker"><use href="#shoe"/></svg>
+    <div class="dots" id="dots" role="tablist" aria-label="Choose colour"></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="head"><h2>Featured Sneakers</h2><p>Free delivery on orders over $100</p></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="section perks" id="about">
+  <div><h3>Free Shipping</h3><p>On every order over $100, delivered in 2 to 4 days.</p></div>
+  <div><h3>30-Day Returns</h3><p>Not the right fit? Send them back for a full refund.</p></div>
+  <div><h3>100% Authentic</h3><p>Every pair is sourced straight from the brand.</p></div>
+</section>
+</main>
+
+<footer class="footer" id="contact">
+  <a class="brand" href="#top"><svg class="brand-ico" style="--main:#2f5bff;--toe:#fff;--acc:#fff;--sole:#fff"><use href="#shoe"/></svg><span>StepUp</span></a>
+  <div class="contact"><a href="tel:+254700123456">+254 700 123 456</a><a href="mailto:hello@stepup.com">hello@stepup.com</a></div>
+  <p>&copy; <span id="year"></span> StepUp. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head"><h2>Your Cart</h2><button id="closeCart" aria-label="Close cart">&times;</button></div>
+  <div class="items" id="items"></div>
+  <div class="drawer-foot">
+    <div class="total"><span>Total</span><strong id="total">$0.00</strong></div>
+    <button class="btn btn-blue" id="checkout">Checkout</button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
